@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
       body: Container(
         child: Padding(
           padding: EdgeInsets.only(top: 20.0),
-          child: Center(
+
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
@@ -46,7 +46,7 @@ class HomePage extends StatelessWidget {
                   },
                   color: Colors.deepPurple,
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.only(top: 8.0),
                     child: Text(
                       'Sign Out',
                       style: TextStyle(fontSize: 25, color: Colors.white),
@@ -60,7 +60,6 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
-      ),
     );
   }
 }
