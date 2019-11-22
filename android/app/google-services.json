@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "784497170018",
+    "firebase_url": "https://nogachat-7e54a.firebaseio.com",
+    "project_id": "nogachat-7e54a",
+    "storage_bucket": "nogachat-7e54a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:784497170018:android:4120f88db0af9d006fe33b",
+        "android_client_info": {
+          "package_name": "com.noga.noga_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "784497170018-tpieucqb3r6dpm344t6knvf9k5kmtrvk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.noga.noga_chat",
+            "certificate_hash": "5b74a655c4dc5df25eb59cbcb391f92d3ce6d130"
+          }
+        },
+        {
+          "client_id": "784497170018-o687u7989sdjt6n7ite1kfqude0kfkrn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkF7WC6RR7oZgFpGQzIk-QNHY5lBruwdk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "784497170018-o687u7989sdjt6n7ite1kfqude0kfkrn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
