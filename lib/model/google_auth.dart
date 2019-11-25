@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'package:noga_chat/services/fcm_service.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final GoogleSignIn googleSignIn = GoogleSignIn();
@@ -14,7 +14,7 @@ FirebaseUser loggedUser;
 Future<String> signInWithGoogle() async {
   final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
   final GoogleSignInAuthentication googleSignInAuthentication =
-  await googleSignInAccount.authentication;
+      await googleSignInAccount.authentication;
 
   final AuthCredential credential = GoogleAuthProvider.getCredential(
     accessToken: googleSignInAuthentication.accessToken,
@@ -33,10 +33,14 @@ Future<String> signInWithGoogle() async {
     'photoURL': user.photoUrl
   };
 
-  Firestore.instance
-      .document("users/${user.uid}")
-      .setData(userData);
+  Firestore.instance.document("users/${user.uid}").setData(userData);
 
+  final String token = (await user.getIdToken()).token;
+
+  Firestore.instance.document("devices/" + token).setData({
+    'token': token,
+    'userID': user.uid
+  });
 
   // Checking if email and name is null
 
@@ -54,6 +58,8 @@ Future<String> signInWithGoogle() async {
 
   final FirebaseUser currentUser = await _auth.currentUser();
   assert(user.uid == currentUser.uid);
+
+  FcmService.init();
 
   return 'signInWithGoogle succeeded: $user';
 }
