@@ -73,6 +73,26 @@ class _ConversationPageState extends State<ConversationPage> {
         });
   }
 
+  Widget _buildSpeechRecognitionButton() {
+    return Container(
+      margin: new EdgeInsets.only(left: 10),
+      child: SizedBox(
+        width: 50,
+        child: new RaisedButton(
+          color: Colors.blueAccent,
+          onPressed: () {},
+          child: Icon(
+            Icons.textsms,
+            color: Colors.white,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: new BorderRadius.circular(18.0),
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -81,9 +101,11 @@ class _ConversationPageState extends State<ConversationPage> {
         automaticallyImplyLeading: false, // Don't show the leading button
         title: new Row(
           children: <Widget>[
-            IconButton(icon: Icon(Icons.arrow_back), onPressed: () {
-              Navigator.pop(context);
-            }),
+            IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: () {
+                  Navigator.pop(context);
+                }),
             new Container(
               margin: EdgeInsets.only(right: 10),
               child: CircleAvatar(
@@ -110,9 +132,9 @@ class _ConversationPageState extends State<ConversationPage> {
                 children: <Widget>[
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      padding: EdgeInsets.symmetric(horizontal: 10),
                       child: Container(
-                          padding: EdgeInsets.only(left: 20, right: 20),
+                          padding: EdgeInsets.only(left: 10, right: 10),
                           decoration: BoxDecoration(
                             color: Colors.black12,
                             borderRadius: BorderRadius.circular(20),
@@ -132,23 +154,31 @@ class _ConversationPageState extends State<ConversationPage> {
                   ),
                   Material(
                     child: new Container(
-                      margin: new EdgeInsets.symmetric(horizontal: 8.0),
-                      child: new RaisedButton(
-                        onPressed: () {
-                          ConversationService.sendMessageToPerson(
-                              loggedUser.uid,
-                              widget.otherPersonID,
-                              this._messageEditingController.value.text);
-                          this._messageEditingController.clear();
-                          this._messageListScrollController.jumpTo(0);
-                        },
-                        child: Icon(Icons.send),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(18.0),
+                      margin: new EdgeInsets.only(left: 10),
+                      child: SizedBox(
+                        width: 50,
+                        child: new RaisedButton(
+                          color: Colors.blueAccent,
+                          onPressed: () {
+                            ConversationService.sendMessageToPerson(
+                                loggedUser.uid,
+                                widget.otherPersonID,
+                                this._messageEditingController.value.text);
+                            this._messageEditingController.clear();
+                            this._messageListScrollController.jumpTo(0);
+                          },
+                          child: Icon(
+                            Icons.send,
+                            color: Colors.white,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(18.0),
+                          ),
                         ),
                       ),
                     ),
                   ),
+                  _buildSpeechRecognitionButton(),
                 ],
               )
             ],
